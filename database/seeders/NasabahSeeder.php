@@ -21,6 +21,8 @@ class NasabahSeeder extends Seeder
                 'jenis_kelamin' => ['Laki-laki', 'Perempuan'][rand(0, 1)],
                 'saldo' => rand(1000000, 5000000),
                 'status_akun' => 'aktif',
+                'kewarganegaraan' => ['WNI', 'WNA'][rand(0, 1)],
+                'no_hp' => '08' . rand(100000000, 999999999),
             ]);
         }
     }

@@ -11,7 +11,12 @@ class Nasabah extends Model
 
     protected $fillable = [
         'user_id', 'no_rekening', 'nik', 'alamat',
-        'tanggal_lahir', 'saldo', 'status_akun',
+        'tanggal_lahir', 'jenis_kelamin', 'saldo', 'status_akun', 'kewarganegaraan', 'no_hp',
+    ];
+
+    protected $casts = [
+        'tanggal_lahir' => 'datetime',
+        'saldo' => 'decimal:2',
     ];
 
     public function user()
