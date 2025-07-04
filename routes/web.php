@@ -15,3 +15,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::middleware(['auth', 'redirect.by.role'])->get('/redirect', function(){
+    // ini ngeload redirect role user
+});
