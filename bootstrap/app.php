@@ -16,12 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function ($middleware) {
         $middleware->alias([
             'redirect.by.role' => RedirectByUserRole::class,
-        ]);
-    })
-
-    ->withMiddleware(function ($middleware) {
-        $middleware->web(append: [
-            RedirectByUserRole::class,
+            'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         ]);
     })
 
