@@ -26,6 +26,9 @@ class JetstreamServiceProvider extends ServiceProvider
 
         Jetstream::deleteUsersUsing(DeleteUser::class);
 
+        // Nonaktifkan pendaftaran
+        Jetstream::ignoreRoutes(['register']);
+
         Vite::prefetch(concurrency: 3);
     }
 
@@ -35,7 +38,7 @@ class JetstreamServiceProvider extends ServiceProvider
     protected function configurePermissions(): void
     {
         Jetstream::defaultApiTokenPermissions(['read']);
-
+        
         Jetstream::permissions([
             'create',
             'read',
