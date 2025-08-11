@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Teller\DashboardController as TellerDashboard;
 use App\Http\Controllers\Nasabah\DashboardController as NasabahDashboard;
+use App\Http\Controllers\Nasabah\DashboardController;
 use Illuminate\Support\Facades\Auth;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,3 +30,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/teller/dashboard', [TellerDashboard::class, 'index'])->name('teller.dashboard');
     Route::get('/nasabah/dashboard', [NasabahDashboard::class, 'index'])->name('nasabah.dashboard');
 });
+
+Route::resource('/nasabah', DashboardController::class);
+
+Route::get('/deposit', function () {
+    return view('nasabah.deposit');
+})->name('nasabah.deposit');
+
+Route::get('/withdraw', function () {
+    return view('nasabah.withdraw');
+})->name('nasabah.withdraw');
+
+Route::get('/transfer', function () {
+    return view('nasabah.transfer');
+})->name('nasabah.transfer');
+
+Route::post('/deposit/update', [DashboardController::class, 'deposit'])->name('nasabah.depositmoney');
+Route::post('/withdraw/update', [DashboardController::class, 'withdraw'])->name('nasabah.withdrawmoney');
+Route::post('/transfer/update', [DashboardController::class, 'transfer'])->name('nasabah.transfermoney');
