@@ -11,7 +11,7 @@
             </div>
             <div class="max-w-7xl w-full grid grid-cols-3 gap-4">
                 <a href="{{ route('nasabah.deposit') }}"
-                    class="bg-blue-300 h-32 rounded-lg hover:bg-blue-400 flex items-center justify-start">
+                    class="bg-blue-500 h-32 rounded-lg hover:bg-blue-600 flex items-center justify-start">
                     <img src="https://img.icons8.com/?size=70&id=89866&format=png&color=ffffff" alt="Deposit"
                         class="mx-6">
                     <div class="text-2xl text-white font-medium">
@@ -19,7 +19,7 @@
                     </div>
                 </a>
                 <a href="{{ route('nasabah.withdraw') }}"
-                    class="bg-yellow-300 h-32 rounded-lg hover:bg-yellow-500 flex items-center justify-start">
+                    class="bg-yellow-500 h-32 rounded-lg hover:bg-yellow-600 flex items-center justify-start">
                     <img src="https://img.icons8.com/?size=70&id=cykpAzfWRTrY&format=png&color=ffffff" alt="Deposit"
                         class="mx-6">
                     <div class="text-2xl text-white font-medium">
@@ -27,7 +27,7 @@
                     </div>
                 </a>
                 <a href="{{ route('nasabah.transfer') }}"
-                    class="bg-green-300 h-32 rounded-lg hover:bg-green-500 flex items-center justify-start">
+                    class="bg-green-500 h-32 rounded-lg hover:bg-green-600 flex items-center justify-start">
                     <img src="https://img.icons8.com/?size=70&id=9917&format=png&color=ffffff" alt="Deposit"
                         class="mx-6">
                     <div class="text-2xl text-white font-medium">
