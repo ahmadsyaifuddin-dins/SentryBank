@@ -7,7 +7,7 @@
         <div class="flex flex-col max-w-7xl w-full h-full px-6 py-6 items-center">
             <div class="max-w-3xl w-full flex flex-col items-center border-2 border-gray-400 rounded-lg shadow-lg">
                 @if ($errors->any())
-                    <div class="bg-red-100 text-red-600 p-3 rounded w-80 mb-3">
+                    <div class="bg-red-100 text-red-600 p-3 rounded w-80 mb-1 mt-3">
                         <ul class="list-disc list-inside text-sm">
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -17,7 +17,7 @@
                 @endif
 
                 @if (session('success'))
-                    <div class="bg-green-100 text-green-600 p-3 rounded w-80 mb-3">
+                    <div class="bg-green-100 text-green-600 p-3 rounded w-80 mb-1 mt-3">
                         {{ session('success') }}
                     </div>
                 @endif

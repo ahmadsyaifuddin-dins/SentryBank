@@ -45,7 +45,7 @@ class DashboardController extends Controller
     {
         // Validasi input
         $request->validate([
-            'norekening' => 'required|exists:nasabahs,no_rekening',
+            'norekening' => 'required',
             'saldo' => 'required|numeric|min:1000|max:20000000',
             'keterangan' => 'nullable|string|max:255',
         ]);
@@ -55,6 +55,9 @@ class DashboardController extends Controller
 
         // Ambil data penerima
         $nasabahPenerima = Nasabah::where('no_rekening', $request->norekening)->first();
+        if (!$nasabahPenerima) {
+            return back()->withErrors(['norekening' => 'Nomor rekening tujuan tidak ditemukan']);
+        }
 
         // Cegah transfer ke rekening sendiri
         if ($nasabahPengirim->id === $nasabahPenerima->id) {
