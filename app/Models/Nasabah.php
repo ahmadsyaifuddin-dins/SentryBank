@@ -38,5 +38,11 @@ class Nasabah extends Model
     {
         return $this->hasMany(Transfer::class, 'ke_nasabah_id');
     }
+
+    // Accessor untuk format saldo
+    public function getFormattedSaldoAttribute()
+    {
+        return 'Rp ' . number_format($this->saldo, 0, ',', '.');
+    }
 }
 

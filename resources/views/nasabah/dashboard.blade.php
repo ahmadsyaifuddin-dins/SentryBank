@@ -7,7 +7,7 @@
     <div class="w-full h-full flex justify-center">
         <div class="flex flex-col max-w-7xl w-full h-full px-6 py-6">
             <div class="font-semibold text-5xl mb-10 mt-3">
-                Rp. {{ $nasabahs->saldo }}
+                {{ $nasabahs->formatted_saldo }}
             </div>
             <div class="max-w-7xl w-full grid grid-cols-3 gap-4">
                 <a href="{{ route('nasabah.deposit') }}"
