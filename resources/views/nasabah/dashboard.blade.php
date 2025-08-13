@@ -4,6 +4,14 @@
         <h2 class="text-xl font-bold">Dashboard Nasabah</h2>
     </x-slot>
 
+    <div class="py-6 px-4">
+        @if (session('success'))
+            <div class="bg-green-100 text-green-700 p-3 rounded w-80 mb-3">
+                {{ session('success') }}
+            </div>
+        @endif
+    </div>
+
     <div class="w-full h-full flex justify-center">
         <div class="flex flex-col max-w-7xl w-full h-full px-6 py-6">
             <div class="font-semibold text-5xl mb-10 mt-3">
