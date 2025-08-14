@@ -2,9 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Transfer extends Model
 {
-    //
+    use HasFactory;
+
+    protected $fillable = [
+        'dari_nasabah_id',
+        'ke_nasabah_id',
+        'nominal',
+        'keterangan',
+        'waktu_transfer',
+    ];
+
+    public function getFormattedSaldoAttribute()
+    {
+        return 'Rp ' . number_format($this->nominal, 0, ',', '.');
+    }
 }

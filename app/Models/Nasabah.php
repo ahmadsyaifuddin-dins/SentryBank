@@ -10,8 +10,16 @@ class Nasabah extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'no_rekening', 'nik', 'alamat',
-        'tanggal_lahir', 'jenis_kelamin', 'saldo', 'status_akun', 'kewarganegaraan', 'no_hp',
+        'user_id',
+        'no_rekening',
+        'nik',
+        'alamat',
+        'tanggal_lahir',
+        'jenis_kelamin',
+        'saldo',
+        'status_akun',
+        'kewarganegaraan',
+        'no_hp',
     ];
 
     protected $casts = [
@@ -38,5 +46,10 @@ class Nasabah extends Model
     {
         return $this->hasMany(Transfer::class, 'ke_nasabah_id');
     }
-}
 
+    // Accessor untuk format saldo
+    public function getFormattedSaldoAttribute()
+    {
+        return 'Rp ' . number_format($this->saldo, 0, ',', '.');
+    }
+}
