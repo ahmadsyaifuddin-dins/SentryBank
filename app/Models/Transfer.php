@@ -16,10 +16,19 @@ class Transfer extends Model
         'keterangan',
         'waktu_transfer',
     ];
-  
+
     public function getFormattedSaldoAttribute()
     {
         return 'Rp ' . number_format($this->nominal, 0, ',', '.');
     }
 
+    public function dariNasabah()
+    {
+        return $this->belongsTo(Nasabah::class, 'dari_nasabah_id');
+    }
+
+    public function keNasabah()
+    {
+        return $this->belongsTo(Nasabah::class, 'ke_nasabah_id');
+    }
 }
