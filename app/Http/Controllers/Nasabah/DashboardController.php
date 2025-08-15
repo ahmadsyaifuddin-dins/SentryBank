@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Nasabah;
 
 use App\Http\Controllers\Controller;
 use App\Models\Nasabah;
+use App\Models\Transaksi;
 use App\Models\Transfer;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -23,6 +24,20 @@ class DashboardController extends Controller
     {
         $nasabahs = Nasabah::where('user_id', Auth::id())->first();
         $totalsaldo = $nasabahs->saldo + $request->saldo;
+
+        $saldosebelum = $nasabahs->saldo;
+        $saldosesudah = $totalsaldo;
+
+        Transaksi::create([
+            'nasabah_id' => $nasabahs->id,
+            'jenis_transaksi' => 'setor',
+            'nominal' => $request->saldo,
+            'saldo_sebelum' => $saldosebelum,
+            'saldo_sesudah' => $saldosesudah,
+            'keterangan' => 'Menabung ke Rekening',
+            'tanggal_transaksi' => now(),
+        ]);
+
         $nasabahs->update([
             'saldo' => $totalsaldo,
         ]);
@@ -34,6 +49,20 @@ class DashboardController extends Controller
     {
         $nasabahs = Nasabah::where('user_id', Auth::id())->first();
         $totalsaldo = $nasabahs->saldo - $request->saldo;
+
+        $saldosebelum = $nasabahs->saldo;
+        $saldosesudah = $totalsaldo;
+
+        Transaksi::create([
+            'nasabah_id' => $nasabahs->id,
+            'jenis_transaksi' => 'tarik',
+            'nominal' => $request->saldo,
+            'saldo_sebelum' => $saldosebelum,
+            'saldo_sesudah' => $saldosesudah,
+            'keterangan' => 'Tarik uang dari Rekening',
+            'tanggal_transaksi' => now(),
+        ]);
+
         $nasabahs->update([
             'saldo' => $totalsaldo,
         ]);

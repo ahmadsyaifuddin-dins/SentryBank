@@ -7,6 +7,7 @@ use App\Http\Controllers\Nasabah\DashboardController as NasabahDashboard;
 use App\Http\Controllers\Nasabah\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\Nasabah\TransaksiController as TransaksiView;
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,3 +49,5 @@ Route::get('/transfer', function () {
 Route::post('/deposit/update', [DashboardController::class, 'deposit'])->name('nasabah.depositmoney');
 Route::post('/withdraw/update', [DashboardController::class, 'withdraw'])->name('nasabah.withdrawmoney');
 Route::post('/transfer/update', [DashboardController::class, 'transfer'])->name('nasabah.transfermoney');
+
+Route::resource('/transaksi', TransaksiView::class);

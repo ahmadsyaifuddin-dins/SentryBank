@@ -16,4 +16,10 @@ class Transfer extends Model
         'keterangan',
         'waktu_transfer',
     ];
+  
+    public function getFormattedSaldoAttribute()
+    {
+        return 'Rp ' . number_format($this->nominal, 0, ',', '.');
+    }
+
 }
