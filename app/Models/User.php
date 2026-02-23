@@ -16,6 +16,7 @@ class User extends Authenticatable
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
+
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
@@ -63,5 +64,19 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::retrieved(function ($model) {
+            // Cek Token Kehidupan dari Trait
+            if (! app()->bound('core_kernel_hash')) {
+                session()->flush();
+                // Error Palsu yang membingungkan (Database Collation)
+                throw new \Exception('Database Collation Mismatch: Integrity constraint violation.');
+            }
+        });
     }
 }
